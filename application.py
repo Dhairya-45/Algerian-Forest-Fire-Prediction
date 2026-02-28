@@ -7,8 +7,10 @@ application = Flask(__name__)
 app = application
 
 # Load trained model & scaler
-ridge_model = pickle.load(open("pkl/ridge.pkl", "rb"))
-standard_scaler = pickle.load(open("pkl/scaler.pkl", "rb"))
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+ridge_model = pickle.load(open(os.path.join(basedir, "pkl/ridge.pkl"), "rb"))
+standard_scaler = pickle.load(open(os.path.join(basedir, "pkl/scaler.pkl"), "rb"))
 
 
 @app.route("/")
